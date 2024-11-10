@@ -1,0 +1,83 @@
+* {
+    user-select: none;
+}
+
+.App {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #2b2b2b;
+    height: 100vh;
+    position: relative;
+    overflow: hidden; /* Оставляем ограничение для всего экрана, но не для кнопки */
+}
+
+.container1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    position: relative;
+    /* Убираем overflow: hidden здесь */
+}
+
+.container1 button {
+    background-color: #2b2b2b;
+    height: 20em;
+    width: 20em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    position: relative;
+    /* Убираем overflow: hidden */
+    transition: transform 0.1s ease;
+}
+
+.container1 button:active {
+    transform: scale(0.8) translateZ(-50px); /* Кнопка уменьшается и отдаляется */
+}
+
+.container1 button img {
+    width: 50%;
+    height: 50%;
+}
+
+.counter {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 10vh;
+    align-items: center;
+    gap: 10px;
+}
+
+.counter img {
+    width: 10%;
+}
+
+.fly-text {
+    position: absolute;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #fff;
+    opacity: 1;
+    animation: flyOut 1s forwards;
+    pointer-events: none; /* Чтобы текст не мешал кликам */
+    will-change: transform, opacity; /* Подсказка для браузера, чтобы анимация была плавной */
+}
+
+@keyframes flyOut {
+    0% {
+        transform: scale(1) translate(0, 0); /* Начальная позиция */
+        opacity: 1;
+    }
+    100% {
+        transform: scale(2) translate(var(--x), var(--y)); /* Вылет по случайному направлению */
+        opacity: 0; /* Медленно исчезает, но не сразу */
+    }
+}
